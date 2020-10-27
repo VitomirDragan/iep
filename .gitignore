@@ -3,3 +3,4 @@
 !.gitignore
 !src
 !CMakeLists.txt
+!build_and_run.sh

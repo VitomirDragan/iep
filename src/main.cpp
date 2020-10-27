@@ -13,6 +13,36 @@ private:
     Uncopyable& operator=(const Uncopyable&);
 };
 
+class Tranzactie{
+private:
+    int idTranzactie;
+    int suma;
+
+public:
+    Tranzactie(int idTranzactie, int suma) : idTranzactie(idTranzactie), suma(suma){}
+
+    Tranzactie(const Tranzactie &t){
+        this->suma = t.suma;
+        this->idTranzactie = t.idTranzactie;
+    }
+
+    ~Tranzactie(){
+        cout << "Deleted trazaction " << idTranzactie << "\n";
+    }
+
+    Tranzactie& operator=(const Tranzactie& t){
+        return *this;
+    }
+
+    int getSuma(){
+        return suma;
+    }
+
+    int getId(){
+        return idTranzactie;
+    }
+};
+
 class SumaTotala : private Uncopyable {
 public:
     virtual float getSumaTotala() = 0;
@@ -83,6 +113,7 @@ private:
     string nume;
     string adresa;
     vector<ContBancar *> conturi;
+    vector<Tranzactie*> tranzactii;
 
 public:
     Client(string numeP, string adresaP, vector<ContBancar *> conturiP) : nume(numeP), adresa(adresaP), conturi(conturiP) {}
@@ -113,6 +144,16 @@ public:
         }
 
         return output;
+    }
+
+    void addTranzaction(Tranzactie* t){
+        tranzactii.push_back(t);
+    }
+
+    void printTranzactions(){
+        for(int i = 0; i < tranzactii.size(); i++){
+            cout << "Tranzactie " << tranzactii[i]->getId() << " - " << tranzactii[i]->getSuma() << '\n';
+        }
     }
 };
 
@@ -175,5 +216,30 @@ int main() {
 
     banca.add(client3);
     banca.afisareClient("E");
+
+    Tranzactie t11 = Tranzactie(1, 200);
+    Tranzactie t21 = Tranzactie(2, 500);
+
+    Tranzactie t12 = Tranzactie(t11);
+    Tranzactie t22 = t21;
+
+    client1.addTranzaction(&t11);
+    client2.addTranzaction(&t12);
+
+    client2.addTranzaction(&t21);
+    client3.addTranzaction(&t22);
+
+    cout << "Tranzactii client 1:\n";
+    client1.printTranzactions();
+    cout << '\n';
+
+    cout << "Tranzactii client 2:\n";
+    client2.printTranzactions();
+    cout << '\n';
+
+    cout << "Tranzactii client 3:\n";
+    client3.printTranzactions();
+    cout << '\n';
+
     return 0;
 }
