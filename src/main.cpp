@@ -208,7 +208,7 @@ public:
         }
 
         for(int i = 0; i < credite.size(); i++){
-            cout << "Credit "<<credite[i]->getId() << " : in valoare de " << credite[i]->getSuma() << " pe " << credite[i]->getPeriod() << "ani\n";
+            cout << "Credit "<<credite[i]->getId() << " : in valoare de " << credite[i]->getSuma() << "lei pe " << credite[i]->getPeriod() << " ani\n";
         }
     }
 
@@ -319,15 +319,15 @@ int main() {
     
     cout<<"Clientul 1 are:\n";
     client1.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"\n";
+    cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"lei\n";
 
     cout<<"Clientul 2 are:\n";
     client2.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client2.calculRataTotala()<<"\n";
+    cout<<"Avand rata lunara totala de: "<< client2.calculRataTotala()<<"lei\n";
 
     cout<<"Clientul 3 are:\n";
     client3.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client3.calculRataTotala()<<"\n";
+    cout<<"Avand rata lunara totala de: "<< client3.calculRataTotala()<<"lei\n";
 
     return 0;
 }
