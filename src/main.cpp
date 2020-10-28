@@ -208,7 +208,7 @@ public:
         }
 
         for(int i = 0; i < credite.size(); i++){
-            cout << "Credit "<<credite[i]->getId() << " : in valoare de " << credite[i]->getSuma() << " pe " << credite[i]->getPeriod() << 'ani\n';
+            cout << "Credit "<<credite[i]->getId() << " : in valoare de " << credite[i]->getSuma() << " pe " << credite[i]->getPeriod() << "ani\n";
         }
     }
 
