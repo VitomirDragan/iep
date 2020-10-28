@@ -13,6 +13,45 @@ private:
     Uncopyable& operator=(const Uncopyable&);
 };
 
+class Credit {
+    private:
+       int idCredit;
+       int suma;
+       int perioada;
+    public:
+       Credit(int idCredit, int suma, int perioada):idCredit(idCredit), suma(suma), perioada(perioada){}
+
+       Credit(const Credit &c){
+           this->idCredit = c.idCredit;
+           this->suma = c.suma;
+           this->perioada = c.perioada;
+       }
+
+       ~Credit(){
+           cout << "Deleted credit " << idCredit << "\n";
+       }
+
+       Credit& operator=(const Credit& t){
+        return *this;
+       }
+
+       int getSuma(){
+        return suma;
+       }
+
+       int getId(){
+        return idCredit;
+       }
+       
+       int getPeriod(){
+           return perioada;
+       }
+
+       int calculRata(){
+           return suma/(perioada * 12) + 0.09 * suma/(perioada * 12);
+       }
+};
+
 class Tranzactie{
 private:
     int idTranzactie;
@@ -114,6 +153,7 @@ private:
     string adresa;
     vector<ContBancar *> conturi;
     vector<Tranzactie*> tranzactii;
+    vector<Credit*> credite;
 
 public:
     Client(string numeP, string adresaP, vector<ContBancar *> conturiP) : nume(numeP), adresa(adresaP), conturi(conturiP) {}
@@ -154,6 +194,32 @@ public:
         for(int i = 0; i < tranzactii.size(); i++){
             cout << "Tranzactie " << tranzactii[i]->getId() << " - " << tranzactii[i]->getSuma() << '\n';
         }
+    }
+
+    void addCredit(Credit* c){
+        credite.push_back(c);
+    }
+
+    void printCredits(){
+        if(credite.size() == 0)
+        {
+            cout<<"Clientul nu are credite deschise pe acest cont bancar";
+            return;
+        }
+
+        for(int i = 0; i < credite.size(); i++){
+            cout << "Credit " <<i<<":" <<credite[i]->getId() << " - " << credite[i]->getSuma() << " - " << credite[i]->getPeriod() << '\n';
+        }
+    }
+
+    int calculRataTotala(){
+        int rataCumulata = 0;
+        if(credite.size() != 0){ 
+            for(int i = 0; i < credite.size(); i++){
+                rataCumulata+= credite[i]->calculRata();
+            }
+        }
+        return rataCumulata;
     }
 };
 
@@ -240,6 +306,28 @@ int main() {
     cout << "Tranzactii client 3:\n";
     client3.printTranzactions();
     cout << '\n';
+    
+        
+    Credit c11 = Credit(12, 200000, 10);
+    Credit c21 = Credit(4, 10000, 3);
+    Credit c12 = Credit(c21);
+
+    client1.addCredit(&c11);
+    client1.addCredit(&c21);
+
+    client2.addCredit(&c12);
+    
+    cout<<"Clientul 1 are:\n";
+    client1.printCredits();
+    cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"\n";
+
+    cout<<"Clientul 2 are:\n";
+    client2.printCredits();
+    cout<<"Avand rata lunara totala de: "<< client2.calculRataTotala()<<"\n";
+
+    cout<<"Clientul 3 are:\n";
+    client3.printCredits();
+    cout<<"Avand rata lunara totala de: "<< client3.calculRataTotala()<<"\n";
 
     return 0;
 }
