@@ -203,7 +203,7 @@ public:
     void printCredits(){
         if(credite.size() == 0)
         {
-            cout<<"Clientul nu are credite deschise pe acest cont bancar\n";
+            cout<<"Credite inexistente pe acest cont bancar\n";
             return;
         }
 
@@ -320,14 +320,17 @@ int main() {
     cout<<"Clientul 1 are:\n";
     client1.printCredits();
     cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"lei\n";
+    cout<<'\n';
 
     cout<<"Clientul 2 are:\n";
     client2.printCredits();
     cout<<"Avand rata lunara totala de: "<< client2.calculRataTotala()<<"lei\n";
+    cout<<'\n';
 
     cout<<"Clientul 3 are:\n";
     client3.printCredits();
     cout<<"Avand rata lunara totala de: "<< client3.calculRataTotala()<<"lei\n";
+    cout<<'\n';
 
     return 0;
 }
