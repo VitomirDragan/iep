@@ -203,12 +203,12 @@ public:
     void printCredits(){
         if(credite.size() == 0)
         {
-            cout<<"Clientul nu are credite deschise pe acest cont bancar";
+            cout<<"Clientul nu are credite deschise pe acest cont bancar\n";
             return;
         }
 
         for(int i = 0; i < credite.size(); i++){
-            cout << "Credit " <<i<<":" <<credite[i]->getId() << " - " << credite[i]->getSuma() << " - " << credite[i]->getPeriod() << '\n';
+            cout << "Credit "<<credite[i]->getId() << " : in valoare de " << credite[i]->getSuma() << " pe " << credite[i]->getPeriod() << 'ani\n';
         }
     }
 
