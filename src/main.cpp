@@ -42,7 +42,7 @@ class Credit {
        int getId(){
         return idCredit;
        }
-       
+
        int getPeriod(){
            return perioada;
        }
@@ -90,9 +90,17 @@ public:
 class ContBancar : public SumaTotala {
 private:
     string numarCont;
-    float suma;
+    float *suma;
 public:
-    ContBancar(string nrCont, float sumaTotala) : numarCont(nrCont), suma(sumaTotala) {}
+    ContBancar(string nrCont, float sumaTotala) : numarCont(nrCont) {
+        suma = new float;
+        *suma = sumaTotala;
+    }
+
+    ~ContBancar(){
+        cout << "Deleted bank account " << numarCont << endl;
+        delete suma;
+    }
 
     string getNumarCont() {
         return numarCont;
@@ -103,11 +111,11 @@ public:
     }
 
     float getSuma() {
-        return suma;
+        return *suma;
     }
 
-    void setSuma(float suma) {
-        this->suma = suma;
+    void setSuma(float sumaP) {
+        *suma = sumaP;
     }
 };
 
@@ -151,12 +159,21 @@ class Client : private Uncopyable{
 private:
     string nume;
     string adresa;
+    int *varsta;
     vector<ContBancar *> conturi;
     vector<Tranzactie*> tranzactii;
     vector<Credit*> credite;
 
 public:
-    Client(string numeP, string adresaP, vector<ContBancar *> conturiP) : nume(numeP), adresa(adresaP), conturi(conturiP) {}
+    Client(string numeP, string adresaP, vector<ContBancar *> conturiP, int varstaP) : nume(numeP), adresa(adresaP), conturi(conturiP) {
+         varsta = new int;
+        *varsta = varstaP;
+    }
+
+    ~Client(){
+        cout << "Deleted client " << nume << endl;
+        delete varsta;
+    }
 
     string getNume() {
         return nume;
@@ -214,7 +231,7 @@ public:
 
     int calculRataTotala(){
         int rataCumulata = 0;
-        if(credite.size() != 0){ 
+        if(credite.size() != 0){
             for(int i = 0; i < credite.size(); i++){
                 rataCumulata+= credite[i]->calculRata();
             }
@@ -226,9 +243,17 @@ public:
 class Banca : private Uncopyable{
 private:
     vector<Client *> clienti;
-    string codBanca;
+    int *codBanca;
 public:
-    Banca(vector<Client *> clientiP, string codBancaP) : clienti(clientiP), codBanca(codBancaP) {}
+    Banca(vector<Client *> clientiP, int codBancaP) : clienti(clientiP) {
+        codBanca = new int;
+        *codBanca = codBancaP;
+    }
+
+    ~Banca(){
+        cout << "Deleted bank " << *codBanca << endl;
+        delete codBanca;
+    }
 
     void add(Client &c) {
         clienti.push_back(&c);
@@ -266,9 +291,9 @@ int main() {
     conturiClient2.push_back(&contEuro2);
     conturiClient2.push_back(&contLei2);
 
-    Client client1("A", "B", conturiClient1);
-    Client client2("C", "D", conturiClient2);
-    Client client3("E", "F", conturiClient1);
+    Client client1("A", "B", conturiClient1,30);
+    Client client2("C", "D", conturiClient2,38);
+    Client client3("E", "F", conturiClient1,45);
 
     contLei1.transfer(contLei2, 34);
     contEuro1.transfer(contEuro2, 56);
@@ -277,7 +302,7 @@ int main() {
     clienti.push_back(&client1);
     clienti.push_back(&client2);
 
-    Banca banca(clienti, "Banca");
+    Banca banca(clienti, 1);
     banca.afisareClient("C");
 
     banca.add(client3);
@@ -306,8 +331,8 @@ int main() {
     cout << "Tranzactii client 3:\n";
     client3.printTranzactions();
     cout << '\n';
-    
-        
+
+
     Credit c11 = Credit(12, 200000, 10);
     Credit c21 = Credit(4, 10000, 3);
     Credit c12 = Credit(c21);
@@ -316,7 +341,7 @@ int main() {
     client1.addCredit(&c21);
 
     client2.addCredit(&c12);
-    
+
     cout<<"Clientul 1 are:\n";
     client1.printCredits();
     cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"lei\n";
