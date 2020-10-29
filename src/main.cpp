@@ -5,7 +5,7 @@
 using namespace std;
 
 class Uncopyable{
-public:
+protected:
     Uncopyable(){}
     ~Uncopyable(){}
 private:
