@@ -1,6 +1,7 @@
 /*
 /*/
 !.gitignore
+!inc
 !src
 !CMakeLists.txt
 !build_and_run.sh
