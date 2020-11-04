@@ -1,27 +1,26 @@
 #include "../inc/ContBancar.h"
 
-ContBancar::ContBancar(string nrCont, float sumaTotala) : numarCont(nrCont) {
-    suma = new float;
-    *suma = sumaTotala;
+ContBancar::ContBancar(string nrCont, float sumaTotala) : numarCont(nrCont) {// Initializam datele membre ale clasei utilizand member list
+    suma = new float(sumaTotala); // Alocare dinamica pentru suma totala si initializare
 }
 
 ContBancar::~ContBancar() {
     cout << "Deleted bank account " << numarCont << endl;
-    delete suma;
+    delete suma; //Eliberare explicita de memorie pentru suma
 }
 
-string ContBancar::getNumarCont() {
+string ContBancar::getNumarCont() {//Getter numar cont
     return numarCont;
 }
 
-void ContBancar::setNumarCont(string numarCont) {
+void ContBancar::setNumarCont(string numarCont) {//Setter numar cont
     this->numarCont = numarCont;
 }
 
-float ContBancar::getSuma() {
+float ContBancar::getSuma() {//Getter suma detinuta in cont
     return *suma;
 }
 
-void ContBancar::setSuma(float sumaP) {
+void ContBancar::setSuma(float sumaP) {//Setter pentru suma
     *suma = sumaP;
 }

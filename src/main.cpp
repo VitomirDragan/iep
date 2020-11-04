@@ -4,7 +4,7 @@
 #include "../inc/Banca.h"
 
 int main() {
-    ContBancarEuro contEuro1("contEuro1", 12000);
+    ContBancarEuro contEuro1("contEuro1", 12000);//Cream obiect de tip ContBancarEuro
     contEuro1.setSuma(12001);
     contEuro1.setNumarCont("contEuro1Modificat");
 
@@ -21,7 +21,7 @@ int main() {
     cout << contLei2.getNumarCont() << " " << contLei2.getSuma() << endl;
 
     vector<ContBancar *> conturiClient1;
-    conturiClient1.push_back(&contEuro1);
+    conturiClient1.push_back(&contEuro1);//Functia push_back face o adaugare la sfasit in vectorul conturiClient
     conturiClient1.push_back(&contLei1);
 
     vector<ContBancar *> conturiClient2;
@@ -45,11 +45,12 @@ int main() {
     banca.add(client3);
     banca.afisareClient("E");
 
-    Tranzactie t11 = Tranzactie(1, 200);
-    Tranzactie t21 = Tranzactie(2, 500);
+    Tranzactie t11(1, 200);
+    Tranzactie t21(2, 500);
+    Tranzactie t22(3, 800);
 
-    Tranzactie t12 = Tranzactie(t11);
-    Tranzactie t22 = t21;
+    Tranzactie t12(t11); /* Folosim copy-constructor pentru a crea t12. Copy constructorul este apelat atunci cand un nou obiect este creat dintr-un obiect existent*/
+    t22 = t21; /*Folosim assignment operator. Acesta este apelat cand unui obiect care a fost deja initializat i se atribuie o noua valoare de la un obiect existent*/
 
     client1.addTranzaction(&t11);
     client2.addTranzaction(&t12);
@@ -70,9 +71,9 @@ int main() {
     cout << '\n';
 
 
-    Credit c11 = Credit(12, 200000, 10);
-    Credit c21 = Credit(4, 10000, 3);
-    Credit c12 = Credit(c21);
+    Credit c11(12, 200000, 10);
+    Credit c21(4, 10000, 3);
+    Credit c12(c21);// Apel copy-constructor pentru a crea un nou obiect de tip credit
 
     client1.addCredit(&c11);
     client1.addCredit(&c21);

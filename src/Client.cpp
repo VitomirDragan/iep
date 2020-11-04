@@ -1,9 +1,8 @@
 #include "../inc/Client.h"
-
+// Initializam datele membre ale clasei utilizand member list
 Client::Client(string numeP, string adresaP, vector<ContBancar *> conturiP, int varstaP) : nume(numeP), adresa(adresaP),
                                                                                            conturi(conturiP) {
-    varsta = new int;
-    *varsta = varstaP;
+    varsta = new int(varstaP);
 }
 
 Client::~Client() {
@@ -11,11 +10,11 @@ Client::~Client() {
     delete varsta;
 }
 
-string Client::getNume() {
+string Client::getNume() {//Getter pentru nume
     return nume;
 }
 
-void Client::setNume(string nume) {
+void Client::setNume(string nume) {//Setter pentru nume
     this->nume = nume;
 }
 
@@ -27,7 +26,7 @@ void Client::setAdresa(string adresa) {
     this->adresa = adresa;
 }
 
-string Client::toString() {
+string Client::toString() {//Afisare client
     string output = "";
 
     output += nume + " " + adresa + "\n";
@@ -39,21 +38,21 @@ string Client::toString() {
     return output;
 }
 
-void Client::addTranzaction(Tranzactie *t) {
+void Client::addTranzaction(Tranzactie *t) {//Adaugare tranzactie
     tranzactii.push_back(t);
 }
 
-void Client::printTranzactions() {
+void Client::printTranzactions() {//Afisare tranzactii
     for (int i = 0; i < tranzactii.size(); i++) {
         cout << "Tranzactie " << tranzactii[i]->getId() << " - " << tranzactii[i]->getSuma() << '\n';
     }
 }
 
-void Client::addCredit(Credit *c) {
+void Client::addCredit(Credit *c) {//Adaugare credit
     credite.push_back(c);
 }
 
-void Client::printCredits() {
+void Client::printCredits() {//Afisam toate creditele unui client
     if (credite.size() == 0) {
         cout << "Credite inexistente pe acest cont bancar\n";
         return;
@@ -65,7 +64,7 @@ void Client::printCredits() {
     }
 }
 
-int Client::calculRataTotala() {
+int Client::calculRataTotala() {//Calcul rata totala
     int rataCumulata = 0;
     if (credite.size() != 0) {
         for (int i = 0; i < credite.size(); i++) {
@@ -74,3 +73,4 @@ int Client::calculRataTotala() {
     }
     return rataCumulata;
 }
+

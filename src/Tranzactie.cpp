@@ -3,6 +3,7 @@
 Tranzactie::Tranzactie(int idTranzactie, int suma) : idTranzactie(idTranzactie), suma(suma) {}
 
 Tranzactie::Tranzactie(const Tranzactie &t) {
+    cout << "Apel copy constructor in Tranzactie" << endl;
     this->suma = t.suma;
     this->idTranzactie = t.idTranzactie;
 }
@@ -12,6 +13,7 @@ Tranzactie::~Tranzactie() {
 }
 
 Tranzactie &Tranzactie::operator=(const Tranzactie &t) {
+    cout << "Apel assignment operator in Tranzactie" << endl;
     return *this;
 }
 
