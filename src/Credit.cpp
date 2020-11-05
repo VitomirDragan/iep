@@ -1,6 +1,6 @@
 #include "../inc/Credit.h"
 
-Credit::Credit(int idCredit, int suma, int perioada) : idCredit(idCredit), suma(suma), perioada(perioada) {}//Apel superconstructor
+Credit::Credit(int idCredit, int suma, int perioada) : idCredit(idCredit), suma(suma), perioada(perioada) {}//Initializare date membre utilizand member list
 
 Credit::Credit(const Credit &c) {//Copy-constructor, se face o copiere pentru fiecare data membra din clasa
     cout << "Apel copy constructor in credit" << endl;
