@@ -7,9 +7,9 @@ using namespace std;
 
 class Credit {
 private:
-    int idCredit;
-    int suma;
-    int perioada;
+    int *idCredit;
+    int *suma;
+    int *perioada;
 public:
     Credit(int idCredit, int suma, int perioada);
 
@@ -17,7 +17,7 @@ public:
 
     ~Credit();
 
-    Credit &operator=(const Credit &t);
+    Credit &operator=(const Credit& c);
 
     int getSuma();
 

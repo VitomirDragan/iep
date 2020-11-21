@@ -27,4 +27,4 @@ add_executable(Project1
 	src/ContBancarLei.cpp 
 	src/Credit.cpp 
 	src/Tranzactie.cpp 
-	src/Uncopyable.cpp)
+	src/Uncopyable.cpp inc/CreditIpotecar.h src/CreditIpotecar.cpp)
