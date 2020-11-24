@@ -7,8 +7,8 @@ using namespace std;
 
 class Tranzactie {
 private:
-    int idTranzactie;
-    int suma;
+    int *idTranzactie;
+    int *suma;
 
 public:
     Tranzactie(int idTranzactie, int suma);
@@ -16,6 +16,7 @@ public:
     Tranzactie(const Tranzactie &t);
 
     ~Tranzactie();
+    void init(const Tranzactie &t);
 
     Tranzactie &operator=(const Tranzactie &t);
 

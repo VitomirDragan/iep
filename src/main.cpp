@@ -48,6 +48,7 @@ int main() {
     Tranzactie t11(1, 200);
     Tranzactie t21(2, 500);
     Tranzactie t22(3, 800);
+    Tranzactie t31(t22);
 
     Tranzactie t12(t11); /* Folosim copy-constructor pentru a crea t12. Copy constructorul este apelat atunci cand un nou obiect este creat dintr-un obiect existent*/
     t22 = t21; /*Folosim assignment operator. Acesta este apelat cand unui obiect care a fost deja initializat i se atribuie o noua valoare de la un obiect existent*/
