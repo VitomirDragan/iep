@@ -12,19 +12,21 @@ Tranzactie::Tranzactie(const Tranzactie &t) {
 }
 
 Tranzactie::~Tranzactie() {
-    cout << "Deleted trazaction " << idTranzactie << "\n";
+    cout << "Deleted trazaction " << *idTranzactie << "\n";
+    delete(idTranzactie);
+    delete(suma);
 }
 
 void Tranzactie::init(const Tranzactie &t)
 {
-    int *sumaO = suma;
-    int *idTranzactieO = idTranzactie;
+//    int *sumaO = suma;
+//    int *idTranzactieO = idTranzactie;
     
     suma= new int(*t.suma);
     idTranzactie= new int(*t.idTranzactie);
 
-    delete sumaO;
-    delete idTranzactieO;
+//    delete sumaO;
+//    delete idTranzactieO;
 }
 
 Tranzactie &Tranzactie::operator=(const Tranzactie &t) {
