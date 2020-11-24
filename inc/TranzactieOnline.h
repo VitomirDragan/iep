@@ -3,9 +3,10 @@
 
 #include <iostream>
 #include "Tranzactie.h"
+
 using namespace std;
 
-class TranzactieOnline : public Tranzactie{
+class TranzactieOnline : public Tranzactie {
 private:
     double *timpAsteptare;
 
@@ -15,10 +16,10 @@ public:
     TranzactieOnline(const TranzactieOnline &t);
 
     ~TranzactieOnline();
-    
+
     TranzactieOnline &operator=(const TranzactieOnline &t);
 
-    double getTimpAsteptare(){return *timpAsteptare;};
+    double getTimpAsteptare() { return *timpAsteptare; };
 
 };
 

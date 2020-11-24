@@ -20,22 +20,22 @@ int main() {
     cout << contLei1.getNumarCont() << " " << contLei1.getSuma() << endl;
     cout << contLei2.getNumarCont() << " " << contLei2.getSuma() << endl;
 
-    vector<ContBancar *> conturiClient1;
+    vector < ContBancar * > conturiClient1;
     conturiClient1.push_back(&contEuro1);//Functia push_back face o adaugare la sfasit in vectorul conturiClient
     conturiClient1.push_back(&contLei1);
 
-    vector<ContBancar *> conturiClient2;
+    vector < ContBancar * > conturiClient2;
     conturiClient2.push_back(&contEuro2);
     conturiClient2.push_back(&contLei2);
 
-    Client client1("A", "B", conturiClient1,30);
-    Client client2("C", "D", conturiClient2,38);
-    Client client3("E", "F", conturiClient1,45);
+    Client client1("A", "B", conturiClient1, 30);
+    Client client2("C", "D", conturiClient2, 38);
+    Client client3("E", "F", conturiClient1, 45);
 
     contLei1.transfer(contLei2, 34);
     contEuro1.transfer(contEuro2, 56);
 
-    vector<Client *> clienti;
+    vector < Client * > clienti;
     clienti.push_back(&client1);
     clienti.push_back(&client2);
 
@@ -50,7 +50,8 @@ int main() {
     Tranzactie t22(3, 800);
     Tranzactie t31(t22);
 
-    Tranzactie t12(t11); /* Folosim copy-constructor pentru a crea t12. Copy constructorul este apelat atunci cand un nou obiect este creat dintr-un obiect existent*/
+    Tranzactie t12(
+            t11); /* Folosim copy-constructor pentru a crea t12. Copy constructorul este apelat atunci cand un nou obiect este creat dintr-un obiect existent*/
     t22 = t21; /*Folosim assignment operator. Acesta este apelat cand unui obiect care a fost deja initializat i se atribuie o noua valoare de la un obiect existent*/
 
     client1.addTranzaction(&t11);
@@ -81,20 +82,20 @@ int main() {
 
     client2.addCredit(&c12);
 
-    cout<<"Clientul 1 are:\n";
+    cout << "Clientul 1 are:\n";
     client1.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client1.calculRataTotala()<<"lei\n";
-    cout<<'\n';
+    cout << "Avand rata lunara totala de: " << client1.calculRataTotala() << "lei\n";
+    cout << '\n';
 
-    cout<<"Clientul 2 are:\n";
+    cout << "Clientul 2 are:\n";
     client2.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client2.calculRataTotala()<<"lei\n";
-    cout<<'\n';
+    cout << "Avand rata lunara totala de: " << client2.calculRataTotala() << "lei\n";
+    cout << '\n';
 
-    cout<<"Clientul 3 are:\n";
+    cout << "Clientul 3 are:\n";
     client3.printCredits();
-    cout<<"Avand rata lunara totala de: "<< client3.calculRataTotala()<<"lei\n";
-    cout<<'\n';
+    cout << "Avand rata lunara totala de: " << client3.calculRataTotala() << "lei\n";
+    cout << '\n';
 
     return 0;
 }

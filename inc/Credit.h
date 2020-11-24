@@ -17,7 +17,7 @@ public:
 
     ~Credit();
 
-    Credit &operator=(const Credit& c);
+    Credit &operator=(const Credit &c);
 
     int getSuma();
 

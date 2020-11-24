@@ -1,4 +1,5 @@
 #include "../inc/Client.h"
+
 // Initializam datele membre ale clasei utilizand member list
 Client::Client(string numeP, string adresaP, vector<ContBancar *> conturiP, int varstaP) : nume(numeP), adresa(adresaP),
                                                                                            conturi(conturiP) {

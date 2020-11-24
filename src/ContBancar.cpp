@@ -1,6 +1,7 @@
 #include "../inc/ContBancar.h"
 
-ContBancar::ContBancar(string nrCont, float sumaTotala) : numarCont(nrCont) {// Initializam datele membre ale clasei utilizand member list
+ContBancar::ContBancar(string nrCont, float sumaTotala) : numarCont(
+        nrCont) {// Initializam datele membre ale clasei utilizand member list
     suma = new float(sumaTotala); // Alocare dinamica pentru suma totala si initializare
 }
 

@@ -17,7 +17,7 @@ public:
 
     CreditIpotecar(const CreditIpotecar &creditIpotecar);
 
-    CreditIpotecar&  operator =(const CreditIpotecar & c);
+    CreditIpotecar &operator=(const CreditIpotecar &c);
 };
 
 #endif

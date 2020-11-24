@@ -20,7 +20,7 @@ Credit::~Credit() {//Destructorul este apelat la distrugerea unui obiect de tip 
     delete perioada;
 }
 
-Credit &Credit::operator=(const Credit& c) {//Assignment operator returneaza o referinta pe obiectul this
+Credit &Credit::operator=(const Credit &c) {//Assignment operator returneaza o referinta pe obiectul this
     int *idCreditO = idCredit;
     int *sumaO = suma;
     int *perioadaO = perioada;
