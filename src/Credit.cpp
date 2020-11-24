@@ -8,9 +8,9 @@ Credit::Credit(int idCredit, int suma, int perioada) {
 
 Credit::Credit(const Credit &c) {//Copy-constructor, se face o copiere pentru fiecare data membra din clasa
     cout << "Apel copy constructor in credit" << endl;
-    this->idCredit = c.idCredit;
-    this->suma = c.suma;
-    this->perioada = c.perioada;
+    this->idCredit = new int(*c.idCredit);
+    this->suma = new int(*c.suma);
+    this->perioada = new int(*c.perioada);
 }
 
 Credit::~Credit() {//Destructorul este apelat la distrugerea unui obiect de tip Credit
@@ -21,7 +21,6 @@ Credit::~Credit() {//Destructorul este apelat la distrugerea unui obiect de tip 
 }
 
 Credit &Credit::operator=(const Credit& c) {//Assignment operator returneaza o referinta pe obiectul this
-
     int *idCreditO = idCredit;
     int *sumaO = suma;
     int *perioadaO = perioada;
