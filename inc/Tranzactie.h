@@ -17,7 +17,7 @@ public:
 
     ~Tranzactie();
     void init(const Tranzactie &t);
-
+    
     Tranzactie &operator=(const Tranzactie &t);
 
     int getSuma();

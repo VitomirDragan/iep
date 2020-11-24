@@ -21,8 +21,7 @@ Credit::~Credit() {//Destructorul este apelat la distrugerea unui obiect de tip 
 }
 
 Credit &Credit::operator=(const Credit& c) {//Assignment operator returneaza o referinta pe obiectul this
-    if (this == &c) return *this;
-    
+
     int *idCreditO = idCredit;
     int *sumaO = suma;
     int *perioadaO = perioada;

@@ -1,7 +1,6 @@
 #ifndef PROJECT1_CREDITIPOTECAR_H
 #define PROJECT1_CREDITIPOTECAR_H
 
-
 #include <iostream>
 #include "Credit.h"
 

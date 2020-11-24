@@ -16,7 +16,7 @@ Tranzactie::~Tranzactie() {
 }
 
 void Tranzactie::init(const Tranzactie &t)
-{
+{   
     int *sumaO = suma;
     int *idTranzactieO = idTranzactie;
     
