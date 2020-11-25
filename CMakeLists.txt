@@ -26,5 +26,6 @@ add_executable(Project1
 	src/ContBancarEuro.cpp 
 	src/ContBancarLei.cpp 
 	src/Credit.cpp 
-	src/Tranzactie.cpp 
+	src/Tranzactie.cpp
+	src/TranzactieOnline.cpp
 	src/Uncopyable.cpp inc/CreditIpotecar.h src/CreditIpotecar.cpp)

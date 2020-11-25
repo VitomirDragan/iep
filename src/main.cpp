@@ -1,3 +1,4 @@
+#include <TranzactieOnline.h>
 #include "../inc/ContBancarEuro.h"
 #include "../inc/ContBancarLei.h"
 #include "../inc/Client.h"
@@ -54,11 +55,26 @@ int main() {
             t11); /* Folosim copy-constructor pentru a crea t12. Copy constructorul este apelat atunci cand un nou obiect este creat dintr-un obiect existent*/
     t22 = t21; /*Folosim assignment operator. Acesta este apelat cand unui obiect care a fost deja initializat i se atribuie o noua valoare de la un obiect existent*/
 
+
+    TranzactieOnline to11(4, 950, 2);
+    TranzactieOnline to21(5, 800, 3);
+    TranzactieOnline to22(6, 750, 1.5);
+    TranzactieOnline to31(to22);
+    TranzactieOnline to12(to11);
+
+    t22 = t21;
+
     client1.addTranzaction(&t11);
+    client1.addTranzaction(&to11);
+
     client2.addTranzaction(&t12);
+    client2.addTranzaction(&to12);
 
     client2.addTranzaction(&t21);
+    client2.addTranzaction(&to21);
+
     client3.addTranzaction(&t22);
+    client3.addTranzaction(&to22);
 
     cout << "Tranzactii client 1:\n";
     client1.printTranzactions();
