@@ -7,7 +7,8 @@ Tranzactie::Tranzactie(int idTranzactie, int suma) {
 
 Tranzactie::Tranzactie(const Tranzactie &t) {
     cout << "Apel copy constructor in Tranzactie" << endl;
-    init(t);
+    suma = new int(*t.suma);
+    idTranzactie = new int(*t.idTranzactie);
 }
 
 Tranzactie::~Tranzactie() {
@@ -16,7 +17,9 @@ Tranzactie::~Tranzactie() {
     delete (suma);
 }
 
-void Tranzactie::init(const Tranzactie &t) {
+
+Tranzactie &Tranzactie::operator=(const Tranzactie &t) {
+    cout << "Apel assignment operator in Tranzactie" << endl;
     int *sumaO = suma;
     int *idTranzactieO = idTranzactie;
 
@@ -25,11 +28,6 @@ void Tranzactie::init(const Tranzactie &t) {
 
     delete sumaO;
     delete idTranzactieO;
-}
-
-Tranzactie &Tranzactie::operator=(const Tranzactie &t) {
-    cout << "Apel assignment operator in Tranzactie" << endl;
-    init(t);
     return *this;
 }
 

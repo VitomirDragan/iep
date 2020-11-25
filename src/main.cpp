@@ -1,4 +1,5 @@
 #include <TranzactieOnline.h>
+#include <CreditIpotecar.h>
 #include "../inc/ContBancarEuro.h"
 #include "../inc/ContBancarLei.h"
 #include "../inc/Client.h"
@@ -93,10 +94,19 @@ int main() {
     Credit c21(4, 10000, 3);
     Credit c12(c21);// Apel copy-constructor pentru a crea un nou obiect de tip credit
 
+    CreditIpotecar ci11(14, 400000, 10, "imobil", 45000);
+    CreditIpotecar ci21(16, 300000, 12, "teren", 35000);
+    CreditIpotecar ci12(ci21); // Apel copy-constructor
+    ci21 = ci12; // Apel assignment operator
+
     client1.addCredit(&c11);
     client1.addCredit(&c21);
+    client1.addCredit(&ci21);
 
     client2.addCredit(&c12);
+    client2.addCredit(&ci11);
+
+    client3.addCredit(&ci12);
 
     cout << "Clientul 1 are:\n";
     client1.printCredits();
